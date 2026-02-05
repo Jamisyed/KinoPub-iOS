@@ -12,7 +12,7 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var kpRatingLabel: UILabel!
     @IBOutlet weak var imdbRatingLabel: UILabel!
     @IBOutlet weak var kinopubRatingLabel: UILabel!
-
+    var widePosterImageView = UIImageView()
     @IBOutlet weak var kinopoiskImageView: UIImageView!
     @IBOutlet weak var imdbImageView: UIImageView!
     @IBOutlet weak var kinopubImageView: UIImageView!
@@ -92,6 +92,15 @@ class SearchResultTableViewCell: UITableViewCell {
 
         if let poster = item.posters?.small {
             posterImageView.af.setImage(
+                withURL: URL(string: poster)!,
+                placeholderImage: UIImage(named: "poster-placeholder.png"),
+                imageTransition: .crossDissolve(0.2),
+                runImageTransitionIfCached: false)
+        }
+        
+        
+        if let poster = item.posters?.wide {
+            self.widePosterImageView.af.setImage(
                 withURL: URL(string: poster)!,
                 placeholderImage: UIImage(named: "poster-placeholder.png"),
                 imageTransition: .crossDissolve(0.2),

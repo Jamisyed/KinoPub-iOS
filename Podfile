@@ -16,7 +16,7 @@ target 'KinoPub' do
 
   # Local
   pod 'NTDownload', :path => 'Dependencies/NTDownload' # :git => 'https://github.com/hintoz/NTDownload.git'
-  pod 'AZSearchView', path: 'Dependencies/AZSearchView' # :git => 'https://github.com/hintoz/AZSearchView.git'
+  #pod 'AZSearchView', path: 'Dependencies/AZSearchView' # :git => 'https://github.com/hintoz/AZSearchView.git'
   pod 'TMDBSwift', :path => 'Dependencies/TheMovieDatabaseSwiftWrapper' # :git => 'https://github.com/gkye/TheMovieDatabaseSwiftWrapper.git', branch: 'master'
   pod 'EZPlayer', :path => 'Dependencies/EZPlayer' # :git => 'https://github.com/hintoz/EZPlayer.git'
   pod 'Letters', :path => 'Dependencies/Swift-UIImageView-Letters'

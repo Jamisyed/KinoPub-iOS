@@ -20,6 +20,7 @@ class DetailViewController: UIViewController, SideMenuItemContent {
     let control = UIRefreshControl()
     var refreshing: Bool = false
     var image: UIImage?
+    var wideImag: UIImage?
     var downloader = ImageDownloader.default
     var navigationBarHide = true
     var titleColor = UIColor.clear
@@ -47,7 +48,9 @@ class DetailViewController: UIViewController, SideMenuItemContent {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.posterImageView.makeRounded()
+        self.posterView.makeRound()
         TMDBConfig.apikey = Config.themoviedb.key
 
         navigationController?.navigationBar.clean(navigationBarHide)
@@ -146,11 +149,33 @@ class DetailViewController: UIViewController, SideMenuItemContent {
     func configTableView() {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
-        //        let fixWrapper = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 195))
-        //        let tableFooterView: TableFooterView = TableFooterView.fromNib()
-        //        tableFooterView.autoresizingMask = [.flexibleWidth]
-        //        fixWrapper.addSubview(tableFooterView)
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        
+        
+                let fixWrapper = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 195))
+                let tableFooterView: TableFooterView = TableFooterView.fromNib()
+                tableFooterView.autoresizingMask = [.flexibleWidth]
+                fixWrapper.addSubview(tableFooterView)
+            //tableFooterView.backgroundColor = .blue
+        
+        
+        NSLayoutConstraint.activate([
+            tableFooterView.centerXAnchor.constraint(equalTo: fixWrapper.centerXAnchor),
+            tableFooterView.centerYAnchor.constraint(equalTo: fixWrapper.centerYAnchor),
+            tableFooterView.widthAnchor.constraint(equalTo: fixWrapper.widthAnchor)
+        ])
+    
+        
+        tableFooterView.frame = CGRect(
+            x: 0,
+            y: (195 - tableFooterView.frame.height) / 2,
+            width: fixWrapper.frame.width,
+            height: tableFooterView.frame.height
+        )
+        tableView.tableFooterView = fixWrapper//UIView(frame: CGRect.zero)
+        
+        fixWrapper.layoutIfNeeded()
+        tableView.tableFooterView = fixWrapper
 
         tableView.register(
             UINib(nibName: String(describing: RatingTableViewCell.self), bundle: Bundle.main),
@@ -234,7 +259,7 @@ class DetailViewController: UIViewController, SideMenuItemContent {
     }
 
     func configHeaderImageView() {
-        headerImageView.image = image
+        headerImageView.image = wideImag
         posterImageView.image = image
         headerView.clipsToBounds = true
     }

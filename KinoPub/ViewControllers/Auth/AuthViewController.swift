@@ -24,6 +24,7 @@ class AuthViewController: UIViewController {
         viewModel.delegate = self
         Config.shared.delegate = self
         config()
+        self.activateButton.isHidden = true
     }
 
     override func viewDidDisappear(_ animated: Bool) {

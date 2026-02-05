@@ -6,6 +6,21 @@ protocol ConfigDelegate: AnyObject {
     func configDidLoad()
 }
 
+
+
+
+
+struct Firebase {
+let gcmMessageIDKey = "gcm.message_id"
+}
+
+
+
+
+
+
+
+
 class Config {
     static let shared = Config()
     //    var remoteConfig: RemoteConfig!
@@ -18,6 +33,40 @@ class Config {
         "delayViewMarkTime": Defaults[.delayViewMarkTime] as NSObject,
         "kinopubDomain": Defaults[.kinopubDomain] as NSObject
     ]
+    
+    
+    
+    
+    static let firebase = Firebase()
+
+
+
+    struct TMDB {
+    let key: String = "YOUR_TMDB_API_KEY"
+    let backdropBase: String = "https://image.tmdb.org/t/p/w780"
+    }
+
+
+
+    static let themoviedb = TMDB()
+
+
+
+    struct Kinopub {
+    let base: String = "https://api.service-kp.com/"
+
+
+
+    let clientId: String = "appletv2"
+    let clientSecret: String = "3z5124kj5liqy9gahnjr07qpj65ferl2"
+    let domain: String = "https://kino.pub"
+    // or use Defaults[.kinopubBase] if dynamic
+    }
+
+
+
+    static let kinopub = Kinopub()
+
 
     var appVersion: String {
         if let dictionary = Bundle.main.infoDictionary {

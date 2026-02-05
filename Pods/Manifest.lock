@@ -4,7 +4,6 @@ PODS:
     - Alamofire (< 6.0.0, >= 5.0.2)
   - AlamofireNetworkActivityLogger (3.0.0):
     - Alamofire (~> 5.0.0-rc.2)
-  - AZSearchView (1.0.3)
   - CircleProgressView (1.2.0)
   - CustomLoader (1.1.0)
   - DGCollectionViewPaginableBehavior (1.0.4)
@@ -62,7 +61,6 @@ DEPENDENCIES:
   - Alamofire (~> 5.0)
   - AlamofireImage
   - AlamofireNetworkActivityLogger
-  - AZSearchView (from `Dependencies/AZSearchView`)
   - CircleProgressView
   - CustomLoader
   - DGCollectionViewPaginableBehavior
@@ -104,8 +102,6 @@ SPEC REPOS:
     - SwiftyUserDefaults
 
 EXTERNAL SOURCES:
-  AZSearchView:
-    :path: Dependencies/AZSearchView
   EZPlayer:
     :path: Dependencies/EZPlayer
   InteractiveSideMenu:
@@ -127,7 +123,6 @@ SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
   AlamofireImage: 3d1a2010519e58675318735580eb856e88840ff7
   AlamofireNetworkActivityLogger: 94e8a7d454a4a9800cef1d0c1d3699754493684b
-  AZSearchView: 4b0b61e576b07bc75b780bca44e80244b74bc436
   CircleProgressView: 6b5b091d59dc5e5d2fda84e637a40498cdc39937
   CustomLoader: 9a2d86bc12480d43a10776c59ca1e51474e2a847
   DGCollectionViewPaginableBehavior: be97bc2177b22e4afa1028ad39d376dc1b6bc940
@@ -149,6 +144,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   TMDBSwift: 646e42e749b072e007ed936097ae25e0a3e510e4
 
-PODFILE CHECKSUM: adb435de0ca66b47e66966931fe7e62395ff79c5
+PODFILE CHECKSUM: b05b9f359c58fc6f367fa479599b45893153269c
 
 COCOAPODS: 1.16.2

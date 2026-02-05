@@ -303,10 +303,6 @@ public class AZSearchViewController: UIViewController{
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
-        
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -315,53 +311,99 @@ public class AZSearchViewController: UIViewController{
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-        
-        //update view background
+        // Update view background
         self.view.backgroundColor = AZSearchViewDefaults.backgroundColor
         
-        //setup tableview
+        // Setup tableView
         if let cellNibName = self.cellNibName {
             self.tableView.register(UINib(nibName: cellNibName, bundle: Bundle.main), forCellReuseIdentifier: self.cellIdentifier)
         } else {
             self.tableView.register(self.cellClass, forCellReuseIdentifier: self.cellIdentifier)
         }
+        
         self.tableView.backgroundColor = tableViewBackgroundColor
         self.tableView.tableFooterView = UIView()
-        //        self.tableView.isHidden = true
+        //    self.tableView.isHidden = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        let stopButton = UIButton(type: .system)
+        stopButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        stopButton.tintColor = .kpMarigold
+        stopButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        stopButton.translatesAutoresizingMaskIntoConstraints = false
         
-        let item = UIBarButtonItem(
-            barButtonSystemItem: .stop, target: self, action: #selector(closeTapped))
-        item.tintColor =   .kpMarigold
-        self.navigationItem.rightBarButtonItem = item
+        // Circular background + border
+        stopButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.05) // background color
+        stopButton.layer.cornerRadius = 45 / 2 // half of width/height
+        stopButton.layer.borderWidth = 0.2
+        stopButton.layer.borderColor = UIColor.black.cgColor
+        stopButton.clipsToBounds = true
         
+        NSLayoutConstraint.activate([
+            stopButton.widthAnchor.constraint(equalToConstant: 45),
+            stopButton.heightAnchor.constraint(equalToConstant: 45)
+        ])
         
-        //setup search bar
-        self.searchBar.placeholder = self.searchBarPlaceHolder
+        //    let closeItem = UIBarButtonItem(
+        //        image: UIImage(systemName: "xmark"),
+        //        style: .plain,
+        //        target: self,
+        //        action: #selector(closeTapped)
+        //    )
+        //    closeItem.tintColor = UIColor(resource: .kpBlack)
         
-        if let searchField = searchBar.value(forKey: "searchField"){(searchField as! UITextField).backgroundColor = self.searchBarBackgroundColor}
+        // Search bar
+        searchBar.placeholder = searchBarPlaceHolder
+        searchBar.delegate = self
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
         
-        self.searchBar.placeholder = self.searchBarPlaceHolder
+        if let searchField = searchBar.value(forKey: "searchField") as? UITextField {
+            searchField.backgroundColor = searchBarBackgroundColor
+        }
+        
+        // Stack view container
+        let stackView = UIStackView(arrangedSubviews: [searchBar, stopButton])
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Wrapper view (important)
+        let containerView = UIView()
+        containerView.addSubview(stackView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+        
+        navigationItem.titleView = containerView
+        
         self.searchBar.delegate = self
         
-        self.searchBar.translatesAutoresizingMaskIntoConstraints = false
-        self.searchBar.widthAnchor.constraint(equalToConstant: 280).isActive = true
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.searchBar)
-        
-        
-        self.searchBar.delegate = self
-        
-        //setup background tap gesture
+        // Setup background tap gesture
         let tap = UITapGestureRecognizer(target: self, action: #selector(AZSearchViewController.didTapBackground(sender:)))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
         
-        //add observers to listen to keyboard events
-        NotificationCenter.default.addObserver(self, selector: #selector(AZSearchViewController.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AZSearchViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        // Add observers to listen to keyboard events
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(AZSearchViewController.keyboardWillShow(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(AZSearchViewController.keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     override public func viewWillAppear(_ animated: Bool) {

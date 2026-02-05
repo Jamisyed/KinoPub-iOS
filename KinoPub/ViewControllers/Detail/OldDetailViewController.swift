@@ -303,7 +303,7 @@ class OldDetailViewController: UIViewController, SideMenuItemContent {
     }
 
     func receivePosterImage() {
-        if let poster = model.item.posters?.big {
+        if let poster = model.item.posters?.wide {
             downloader.download(
                 URLRequest(url: URL(string: poster)!),
                 completion: { (response) in

@@ -195,3 +195,28 @@ extension HostViewController: AccountManagerDelegate {
         showAuthViewController()
     }
 }
+
+
+extension HostViewController {
+
+    func handleQuickAction(_ type: String) {
+
+        guard
+            let action = QuickAction(rawValue: type),
+            let index = menu.firstIndex(of: action.menuItem),
+            index < contentViewControllers.count
+        else { return }
+
+        Defaults[.menuItem] = index
+
+        let vc = contentViewControllers[index]
+        selectContentViewController(vc)
+
+        // Handle tab-based controllers
+        if let navVC = vc as? NavigationController,
+           let itemsVC = navVC.viewControllers.first as? ItemsCollectionViewController,
+           let tag = menu[index].tag {
+            itemsVC.itemsTag = tag
+        }
+    }
+}

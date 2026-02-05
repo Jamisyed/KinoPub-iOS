@@ -21,6 +21,9 @@ class ButtonsTableViewCell: UITableViewCell {
         watchlistAndDownloadButton.setTitleColor(.kpGreyishTwo, for: .normal)
         bookmarkButton.layerBorderColor = .kpGreyishBrown
         watchlistAndDownloadButton.layerBorderColor = .kpGreyishBrown
+        
+        self.bookmarkButton.makeOutline()
+        self.watchlistAndDownloadButton.makeOutline()
     }
 
     func config(withModel model: VideoItemModel, bookmarksModel: BookmarksModel) {
@@ -159,3 +162,5 @@ class ButtonsTableViewCell: UITableViewCell {
     }
 
 }
+
+

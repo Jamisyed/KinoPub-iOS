@@ -8,12 +8,14 @@ public struct Posters: Mappable {
         static let big = "big"
         static let small = "small"
         static let medium = "medium"
+        static let wide = "wide"
     }
 
     // MARK: Properties
     public var big: String!
     public var small: String!
     public var medium: String!
+    public var wide: String!
 
     public init?(map: Map) {
 
@@ -23,5 +25,6 @@ public struct Posters: Mappable {
         big <- map[SerializationKeys.big]
         small <- map[SerializationKeys.small]
         medium <- map[SerializationKeys.medium]
+        wide <- map[SerializationKeys.wide]
     }
 }

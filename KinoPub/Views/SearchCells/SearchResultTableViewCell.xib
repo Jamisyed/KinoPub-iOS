@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,8 +17,8 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultTableViewCell" id="KGk-i7-Jjw" customClass="SearchResultTableViewCell" customModule="KinoPub" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="349" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="349" height="110.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="349" height="111"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MEe-EZ-5dd">
@@ -37,10 +34,10 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="C9z-VN-140">
-                        <rect key="frame" x="78" y="20" width="256" height="71.5"/>
+                        <rect key="frame" x="78" y="20" width="256" height="72.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="vHn-gZ-7Cd">
-                                <rect key="frame" x="0.0" y="0.0" width="37" height="48.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="39.5" height="49.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" type " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNn-iB-aaF">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="14"/>
@@ -58,22 +55,22 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2j-bH-kyU">
-                                        <rect key="frame" x="0.0" y="16" width="26.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="16" width="28.5" height="17"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Title">
                                                 <attributes>
-                                                    <font key="NSFont" size="14" name="SFProText-Regular"/>
+                                                    <font key="NSFont" metaFont="menu" size="14"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC9-RZ-2va">
-                                        <rect key="frame" x="0.0" y="34.5" width="37" height="14"/>
+                                        <rect key="frame" x="0.0" y="35" width="39.5" height="14.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="En title">
                                                 <attributes>
-                                                    <font key="NSFont" size="12" name="SFProText-Regular"/>
+                                                    <font key="NSFont" metaFont="cellTitle"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -82,10 +79,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oKL-7F-556">
-                                <rect key="frame" x="0.0" y="57.5" width="89" height="14"/>
+                                <rect key="frame" x="0.0" y="58.5" width="92" height="14"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="U6Q-Lq-W3d">
-                                        <rect key="frame" x="0.0" y="0.0" width="23" height="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="14"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KinoPub" translatesAutoresizingMaskIntoConstraints="NO" id="jK1-ED-JUK">
                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
@@ -95,12 +92,12 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twI-UB-XXZ">
-                                                <rect key="frame" x="16" y="0.0" width="7" height="14"/>
+                                                <rect key="frame" x="16" y="0.0" width="8" height="14"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="0">
                                                         <attributes>
                                                             <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <font key="NSFont" size="12" name="SFProDisplay-Bold"/>
+                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -109,7 +106,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="J6l-Sm-1aZ">
-                                        <rect key="frame" x="33" y="0.0" width="23" height="14"/>
+                                        <rect key="frame" x="34" y="0.0" width="24" height="14"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Kinopoisk" translatesAutoresizingMaskIntoConstraints="NO" id="6ji-Yd-nlW">
                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
@@ -119,12 +116,12 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4N-3m-Pqw">
-                                                <rect key="frame" x="16" y="0.0" width="7" height="14"/>
+                                                <rect key="frame" x="16" y="0.0" width="8" height="14"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="0">
                                                         <attributes>
                                                             <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <font key="NSFont" size="12" name="SFProDisplay-Bold"/>
+                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -133,7 +130,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-uk-zTU">
-                                        <rect key="frame" x="66" y="0.0" width="23" height="14"/>
+                                        <rect key="frame" x="68" y="0.0" width="24" height="14"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMDB" translatesAutoresizingMaskIntoConstraints="NO" id="4eH-VI-Ymj">
                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
@@ -143,12 +140,12 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcB-45-e4c">
-                                                <rect key="frame" x="16" y="0.0" width="7" height="14"/>
+                                                <rect key="frame" x="16" y="0.0" width="8" height="14"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="0">
                                                         <attributes>
                                                             <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <font key="NSFont" size="12" name="SFProDisplay-Bold"/>
+                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -184,7 +181,7 @@
                 <outlet property="ruTitleLabel" destination="z2j-bH-kyU" id="Uul-HS-lWg"/>
                 <outlet property="typeLabel" destination="YNn-iB-aaF" id="Pte-CQ-Jr6"/>
             </connections>
-            <point key="canvasLocation" x="48.5" y="111.5"/>
+            <point key="canvasLocation" x="77.599999999999994" y="100.29985007496252"/>
         </tableViewCell>
     </objects>
     <resources>

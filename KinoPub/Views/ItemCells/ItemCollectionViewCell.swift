@@ -22,7 +22,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imdbRatingLabel: UILabel!
     @IBOutlet weak var kinopubRatingLabel: UILabel!
     @IBOutlet weak var ratingView: UIView!
-
+    var posterWideImageView: UIImageView = UIImageView()
     @IBOutlet weak var kinopoiskImageView: UIImageView!
     @IBOutlet weak var imdbImageView: UIImageView!
     @IBOutlet weak var kinopubImageView: UIImageView!
@@ -43,6 +43,10 @@ class ItemCollectionViewCell: UICollectionViewCell {
         // Initialization code
         configViews()
         configBlur()
+        posterImageView.makeRounded()
+        self.ratingView.makeRound(radius: 5)
+
+
     }
 
     func configViews() {
@@ -107,6 +111,14 @@ class ItemCollectionViewCell: UICollectionViewCell {
                 imageTransition: .crossDissolve(0.2),
                 runImageTransitionIfCached: false)
         }
+        
+        if let posterWide = item.posters?.wide {
+            posterWideImageView.af.setImage(
+                withURL: URL(string: posterWide)!,
+                placeholderImage: UIImage(named: "poster-placeholder.png"),
+                imageTransition: .crossDissolve(0.2),
+                runImageTransitionIfCached: false)
+        }
 
         if let newEpisode = item.new {
             newEpisodeView.isHidden = false
@@ -154,3 +166,49 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
 
 }
+
+
+
+import UIKit
+
+extension UIImageView {
+    
+    /// Apply rounded corners to the image view
+    /// - Parameters:
+    ///   - radius: corner radius (default is 12)
+    ///   - borderWidth: optional border width (default 0)
+    ///   - borderColor: optional border color (default clear)
+    func makeRounded(
+        radius: CGFloat = 6,
+        borderWidth: CGFloat = 0,
+        borderColor: UIColor = .clear
+    ) {
+        self.layer.cornerRadius = radius
+        self.clipsToBounds = true
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = borderColor.cgColor
+    }
+}
+
+
+
+import UIKit
+
+extension UIView {
+    func makeRound(radius: CGFloat = 6, borderWidth: CGFloat = 0, borderColor: UIColor = .clear) {
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true  // use masksToBounds for UIView
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = borderColor.cgColor
+    }
+    
+    func applyShadow(color: UIColor = .black, opacity: Float = 0.3, offset: CGSize = CGSize(width: 0, height: 2), radius: CGFloat = 6) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = radius
+        self.layer.masksToBounds = false
+    }
+}
+
+
