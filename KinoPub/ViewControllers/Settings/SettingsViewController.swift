@@ -227,6 +227,7 @@ class SetViewController: FormViewController, SideMenuItemContent {
                 $0.value = Defaults[.clientTitle]
             }.onChange({ (row) in
                 Defaults[.clientTitle] = row.value ?? "iPhone"
+                Container.Manager.account.notifyAboutDevice()
             })
 
             //            +++ Section(footer: "(c) 2017 Evgeny Dats http://dats.xyz")

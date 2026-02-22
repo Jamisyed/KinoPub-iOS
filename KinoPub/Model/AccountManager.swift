@@ -11,6 +11,7 @@ protocol AccountManager: AnyObject {
     func createAccount(tokenData: TokenResponse)
     func silentlyUpdateAccountWith(accessToken token: String, refreshToken: String)
     func logoutAccount()
+    func notifyAboutDevice()
 }
 
 protocol AccountManagerDelegate {
@@ -37,6 +38,10 @@ extension AccountManagerDelegate {
 }
 
 class AccountManagerImp: AccountManager {
+    func notifyAboutDevice() {
+        notifyAboutDeviceIfRequired()
+    }
+    
     var delegatesStorage = DelegatesStorage()
     let requestFactory: RequestFactory
     let accountNetworkingService: AccountNetworkingService
